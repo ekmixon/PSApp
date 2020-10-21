@@ -1,2 +1,2 @@
 # PSApp
-Simple Powershell script app deployment builder
+Simple powershell app deployment.
