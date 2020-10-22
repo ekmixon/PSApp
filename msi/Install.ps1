@@ -1,10 +1,10 @@
 [string]$ScriptPath = $(Split-Path -Parent $PSCommandPath)
 [string]$MsiExec = "$env:WINDIR\System32\msiexec.exe"
-[string]$MsiFile = "filename.msi"
+[string]$InstallerFile = "filename.msi"
 
 $InstallerArgs = @(
     '/i',
-    "'$ScriptPath\$MsiFile'",
+    "'$ScriptPath\$InstallerFile'",
     '/qn'
 )
 
