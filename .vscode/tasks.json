@@ -44,6 +44,15 @@
             }
         },
         {
+            "label": "Build PADT",
+            "type": "shell",
+            "command": "Copy-Item -Path '${cwd}\\PSAppDeployToolkit_v3.8.3\\Toolkit' -Destination '${cwd}\\${input:installerName}' -Recurse -Force -Verbose",
+            "group": {
+                "kind": "build",
+                "isDefault": true
+            }
+        },
+        {
             "label": "Test Install",
             "type": "shell",
             "command": "Start-Process powershell -ArgumentList '-NoLogo -NoProfile -ExecutionPolicy Bypass -File ${file}' -Verb RunAs",

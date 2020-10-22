@@ -4,6 +4,7 @@
 !.vscode
 !exe
 !msi
+!PSAppDeployToolkit_v3.8.3
 !Microsoft.VSCode_profile.ps1
 !PSApp.code-workspace
 !README.md
