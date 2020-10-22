@@ -60,6 +60,60 @@
                 "kind": "test",
                 "isDefault": true
             }
+        },
+        {
+            "label": "Test Install Interactive PADT",
+            "type": "shell",
+            "command": "Start-Process psexec -ArgumentList '-i -s powershell -NoExit -NoProfile -ExecutionPolicy Bypass ${file} -DeploymentType Install -DeployMode Interactive' -Verb runAs",
+            "group": {
+                "kind": "build",
+                "isDefault": true
+            }
+        },
+        {
+            "label": "Test Install Non-Interactive PADT",
+            "type": "shell",
+            "command": "Start-Process psexec -ArgumentList '-i -s powershell -NoExit -NoProfile -ExecutionPolicy Bypass ${file} -DeploymentType Install -DeployMode NonInteractive' -Verb runAs",
+            "group": {
+                "kind": "build",
+                "isDefault": true
+            }
+        },
+        {
+            "label": "Test Install Silent PADT",
+            "type": "shell",
+            "command": "Start-Process psexec -ArgumentList '-i -s powershell -NoExit -NoProfile -ExecutionPolicy Bypass ${file} -DeploymentType Install -DeployMode Silent' -Verb runAs",
+            "group": {
+                "kind": "build",
+                "isDefault": true
+            }
+        },
+        {
+            "label": "Test Uninstall Interactive PADT",
+            "type": "shell",
+            "command": "Start-Process psexec -ArgumentList '-i -s powershell -NoExit -NoProfile -ExecutionPolicy Bypass ${file} -DeploymentType Uninstall -DeployMode Interactive' -Verb runAs",
+            "group": {
+                "kind": "build",
+                "isDefault": true
+            }
+        },
+        {
+            "label": "Test Uninstall Non-Interactive PADT",
+            "type": "shell",
+            "command": "Start-Process psexec -ArgumentList '-i -s powershell -NoExit -NoProfile -ExecutionPolicy Bypass ${file} -DeploymentType Uninstall -DeployMode Non-Interactive' -Verb runAs",
+            "group": {
+                "kind": "build",
+                "isDefault": true
+            }
+        },
+        {
+            "label": "Test Uninstall Silent PADT",
+            "type": "shell",
+            "command": "Start-Process psexec -ArgumentList '-i -s powershell -NoExit -NoProfile -ExecutionPolicy Bypass ${file} -DeploymentType Uninstall -DeployMode Silent' -Verb runAs",
+            "group": {
+                "kind": "build",
+                "isDefault": true
+            }
         }
     ],
     "inputs": [
