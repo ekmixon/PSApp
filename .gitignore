@@ -5,5 +5,5 @@
 !msi
 !Build.ps1
 !Microsoft.VSCode_profile.ps1
-!Package.code-workspace
+!PSApp.code-workspace
 !README.md
