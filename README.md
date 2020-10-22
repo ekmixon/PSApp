@@ -1,2 +1,2 @@
 # PSApp
-Simple powershell app deployment.
+Templates for softwaer deployment.
