@@ -1,2 +1,2 @@
 # PSApp
-Templates for softwaer deployment.
+Templates for software deployment.
