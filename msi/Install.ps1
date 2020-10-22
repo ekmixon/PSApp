@@ -4,8 +4,8 @@
 
 $InstallerArgs = @(
     '/i',
-    "$ScriptPath\$MsiFile",
+    "'$ScriptPath\$MsiFile'",
     '/qn'
 )
 
-Start-Process $MsiExec -ArgumentList $InstallerArgs -WorkingDirectory "$ScriptPath" -NoNewWindow
+Start-Process "$MsiExec" -ArgumentList $InstallerArgs -WorkingDirectory "$ScriptPath" -NoNewWindow
