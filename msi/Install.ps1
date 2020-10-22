@@ -8,4 +8,4 @@ $InstallerArgs = @(
     '/qn'
 )
 
-Start-Process "$MsiExec" -ArgumentList $InstallerArgs -WorkingDirectory "$ScriptPath" -NoNewWindow
+Start-Process "$MsiExec" -ArgumentList $InstallerArgs -WorkingDirectory "$ScriptPath" -NoNewWindow -Wait
