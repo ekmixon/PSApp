@@ -3,7 +3,6 @@
 .DS_Store
 !.vscode
 !msi
-!Build.ps1
 !Microsoft.VSCode_profile.ps1
 !PSApp.code-workspace
 !README.md
