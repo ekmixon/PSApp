@@ -28,14 +28,14 @@
         {
             "label": "Build MSI",
             "type": "shell",
-            "command": "${cwd}\\msi.ps1",
+            "command": "Copy-Item -Path '${cwd}\\msi' -Destination '${cwd}\\${input:installerName}' -Recurse -Force -Verbose",
             "group": {
                 "kind": "build",
                 "isDefault": true
             }
         },
         {
-            "label": "Test",
+            "label": "Test Install",
             "type": "shell",
             "command": "Start-Process powershell -ArgumentList '-NoLogo -NoProfile -ExecutionPolicy Bypass -File ${file}' -Verb RunAs",
             "group": {
@@ -43,5 +43,13 @@
                 "isDefault": true
             }
         }
-    ]
+    ],
+    "inputs": [
+        {
+          "type": "promptString",
+          "id": "installerName",
+          "description": "Name your installer.",
+          "default": "temp_installer"
+        }
+      ]
 }
