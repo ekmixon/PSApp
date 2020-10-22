@@ -2,6 +2,7 @@
 !.gitignore
 .DS_Store
 !.vscode
+!exe
 !msi
 !Microsoft.VSCode_profile.ps1
 !PSApp.code-workspace
