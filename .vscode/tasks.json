@@ -26,6 +26,15 @@
     },
     "tasks": [
         {
+            "label": "Build EXE",
+            "type": "shell",
+            "command": "Copy-Item -Path '${cwd}\\exe' -Destination '${cwd}\\${input:installerName}' -Recurse -Force -Verbose",
+            "group": {
+                "kind": "build",
+                "isDefault": true
+            }
+        },
+        {
             "label": "Build MSI",
             "type": "shell",
             "command": "Copy-Item -Path '${cwd}\\msi' -Destination '${cwd}\\${input:installerName}' -Recurse -Force -Verbose",
