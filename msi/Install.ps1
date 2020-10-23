@@ -1,14 +1,22 @@
-##*===============================================
-##* VARIABLE DECLARATION
-##*===============================================
-[string]$InstallerFile = "filename.msi"
-[array]$InstallerArgs = @(
+## Variables: Environment
+[string]$DateString = (Get-Date).ToString("yyyy-MM-dd-hhmmss")
+[string]$SrcPath = $(Split-Path -Parent $PSCommandPath)
+[string]$MsiExec = "$env:WINDIR\System32\msiexec.exe"
+[string]$TmpPath = "$env:TEMP"
+
+## Variables: Installer specific
+[string]$SrcFile = "filename.msi"
+[array]$InstallOptions = @(
     '/i',
-    "'$ScriptPath\$InstallerFile'",
+    "'$SrcPath\$SrcFile'",
     '/qn'
 )
 
-## <Perform Installation tasks here>
-[string]$ScriptPath = $(Split-Path -Parent $PSCommandPath)
-[string]$MsiExec = "$env:WINDIR\System32\msiexec.exe"
-Start-Process "$MsiExec" -ArgumentList $InstallerArgs -WorkingDirectory "$ScriptPath" -NoNewWindow -Wait
+## Perform installation tasks here
+Start-Transcript -Path "$TmpPath\$SrcFile.$DateString.log"
+Try {
+    Start-Process $MsiExec -ArgumentList $InstallOptions -WorkingDirectory $SrcPath -NoNewWindow -Wait
+} Catch {
+    Write-Error -Message "Error"
+}
+Stop-Transcript
