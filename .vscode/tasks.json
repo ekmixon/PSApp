@@ -26,37 +26,60 @@
     },
     "tasks": [
         {
-            "label": "Build EXE",
+            "label": "Build Deployment",
             "type": "shell",
-            "command": "Copy-Item -Path '${cwd}\\exe' -Destination '${cwd}\\${input:Name}' -Recurse -Force -Verbose",
-            "group": "build",
-        },
-        {
-            "label": "Build MSI",
-            "type": "shell",
-            "command": "Copy-Item -Path '${cwd}\\msi' -Destination '${cwd}\\${input:Name}' -Recurse -Force -Verbose",
-            "group": "build",
-        },
-        {
-            "label": "Build PADT",
-            "type": "shell",
-            "command": "Copy-Item -Path '${cwd}\\PSAppDeployToolkit_v3.8.3\\Toolkit' -Destination '${cwd}\\${input:Name}' -Recurse -Force -Verbose",
-            "group": "build",
+            "command": "Copy-Item -Path '${cwd}\\${input:Template}' -Destination '${cwd}\\${input:Name}' -Recurse -Force -Verbose",
+            "group": {
+                "kind": "build",
+                "isDefault": true
+            },
+            "presentation": {
+                "clear": true,
+                "focus": true,
+                "panel": "shared"
+            }
         },
         {
             "label": "Test Install",
             "type": "shell",
             "command": "Start-Process powershell -ArgumentList '-NoLogo -NoProfile -ExecutionPolicy Bypass -File ${file}' -Verb RunAs",
-            "group": "build",
+            "group": {
+                "kind": "test",
+                "isDefault": true
+            },
+            "presentation": {
+                "clear": true,
+                "focus": true,
+                "panel": "shared"
+            }
         },
         {
             "label": "Test PADT",
             "type": "shell",
             "command": "Start-Process psexec -ArgumentList '-i -s powershell -NoProfile -ExecutionPolicy Bypass ${file} -Type ${input:Type} -DeployMode ${input:Mode}' -Verb runAs",
-            "group": "build",
+            "group": {
+                "kind": "test",
+                "isDefault": true
+            },
+            "presentation": {
+                "clear": true,
+                "focus": true,
+                "panel": "shared"
+            }
         }
     ],
     "inputs": [
+        {
+            "type": "pickString",
+            "id": "Template",
+            "description": "Deployment Template?",
+            "options": [
+                "exe",
+                "msi",
+                "PSAppDeployToolkit_v3.8.3"
+            ],
+            "default": "msi"
+        },
         {
             "type": "promptString",
             "id": "Name",
