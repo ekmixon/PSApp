@@ -28,59 +28,44 @@
         {
             "label": "Build EXE",
             "type": "shell",
-            "command": "Copy-Item -Path '${cwd}\\exe' -Destination '${cwd}\\${input:installerName}' -Recurse -Force -Verbose",
-            "group": {
-                "kind": "build",
-                "isDefault": true
-            }
+            "command": "Copy-Item -Path '${cwd}\\exe' -Destination '${cwd}\\${input:Name}' -Recurse -Force -Verbose",
+            "group": "build",
         },
         {
             "label": "Build MSI",
             "type": "shell",
-            "command": "Copy-Item -Path '${cwd}\\msi' -Destination '${cwd}\\${input:installerName}' -Recurse -Force -Verbose",
-            "group": {
-                "kind": "build",
-                "isDefault": true
-            }
+            "command": "Copy-Item -Path '${cwd}\\msi' -Destination '${cwd}\\${input:Name}' -Recurse -Force -Verbose",
+            "group": "build",
         },
         {
             "label": "Build PADT",
             "type": "shell",
-            "command": "Copy-Item -Path '${cwd}\\PSAppDeployToolkit_v3.8.3\\Toolkit' -Destination '${cwd}\\${input:installerName}' -Recurse -Force -Verbose",
-            "group": {
-                "kind": "build",
-                "isDefault": true
-            }
+            "command": "Copy-Item -Path '${cwd}\\PSAppDeployToolkit_v3.8.3\\Toolkit' -Destination '${cwd}\\${input:Name}' -Recurse -Force -Verbose",
+            "group": "build",
         },
         {
             "label": "Test Install",
             "type": "shell",
             "command": "Start-Process powershell -ArgumentList '-NoLogo -NoProfile -ExecutionPolicy Bypass -File ${file}' -Verb RunAs",
-            "group": {
-                "kind": "build",
-                "isDefault": true
-            }
+            "group": "build",
         },
         {
             "label": "Test PADT",
             "type": "shell",
-            "command": "Start-Process psexec -ArgumentList '-i -s powershell -NoExit -NoProfile -ExecutionPolicy Bypass ${file} -DeploymentType ${input:deploymentType} -DeployMode ${input:deploymentMode}' -Verb runAs",
-            "group": {
-                "kind": "build",
-                "isDefault": true
-            }
+            "command": "Start-Process psexec -ArgumentList '-i -s powershell -NoProfile -ExecutionPolicy Bypass ${file} -Type ${input:Type} -DeployMode ${input:Mode}' -Verb runAs",
+            "group": "build",
         }
     ],
     "inputs": [
         {
             "type": "promptString",
-            "id": "installerName",
-            "description": "Name your installer.",
-            "default": "temp_installer"
+            "id": "Name",
+            "description": "Deployment Name?",
+            "default": "test"
         },
         {
             "type": "pickString",
-            "id": "deploymentType",
+            "id": "Type",
             "description": "Deployment Type?",
             "options": [
                 "Install",
@@ -90,7 +75,7 @@
         },
         {
             "type": "pickString",
-            "id": "deploymentMode",
+            "id": "Mode",
             "description": "Deployment Mode?",
             "options": [
                 "Interactive",
