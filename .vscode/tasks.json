@@ -56,7 +56,7 @@
         {
             "label": "Test PADT",
             "type": "shell",
-            "command": "Start-Process powershell -ArgumentList '-NoProfile -ExecutionPolicy Bypass ${file} -DeploymentType ${input:Type} -DeployMode ${input:Mode}' -Verb runAs",
+            "command": "Start-Process ${fileDirname}\\Deploy-Application.exe -ArgumentList '-DeploymentType ${input:Type} -DeployMode ${input:Mode}' -Verb runAs",
             "group": {
                 "kind": "test",
                 "isDefault": true
@@ -70,7 +70,7 @@
         {
             "label": "Test PADT SYSTEM NT",
             "type": "shell",
-            "command": "Start-Process psexec -ArgumentList '-i -s powershell -NoProfile -ExecutionPolicy Bypass ${file} -DeploymentType ${input:Type} -DeployMode ${input:Mode}' -Verb runAs",
+            "command": "Start-Process psexec -ArgumentList '-i -s ${fileDirname}\\Deploy-Application.exe -DeploymentType ${input:Type} -DeployMode ${input:Mode}' -Verb runAs",
             "group": {
                 "kind": "test",
                 "isDefault": true
