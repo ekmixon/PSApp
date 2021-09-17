@@ -8,7 +8,7 @@
 [string]$SrcFile = "filename.msi"
 [array]$InstallOptions = @(
     '/i',
-    "'$SrcPath\$SrcFile'",
+    """$SrcPath\$SrcFile""",
     '/qn'
 )
 
